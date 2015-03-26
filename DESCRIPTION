@@ -1,4 +1,4 @@
-Package: rwikipedia
+Package: pediarr
 Title: R interface to Wikipedia API
 Version: 0.1
 Authors@R: "Chung-hong Chan <chainsawtiney@gmail.com> [aut, cre]"
