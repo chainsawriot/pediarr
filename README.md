@@ -10,7 +10,7 @@ if(!require("devtools")){
     library("devtools")
 }
 install_github("chainsawriot/pediarr")
-```r
+```
 
 ## Features
 
