@@ -2,6 +2,16 @@
 
 R interface to Wikipedia API
 
+# Package Installation
+
+```r
+if(!require("devtools")){
+    install.packages("devtools")
+    library("devtools")
+}
+install_github("chainsawriot/pediarr")
+```r
+
 ## Features
 
 * Search Wikipedia

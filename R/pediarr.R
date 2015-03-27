@@ -1,5 +1,3 @@
-require(httr)
-
 langapi <- function(lang) {
     return(paste0("https://", lang, ".wikipedia.org/w/api.php"))
 }

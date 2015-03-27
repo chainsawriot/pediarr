@@ -1,8 +1,10 @@
 Package: pediarr
 Title: R interface to Wikipedia API
-Version: 0.1
+Version: 0.1.1
 Authors@R: "Chung-hong Chan <chainsawtiney@gmail.com> [aut, cre]"
 Description: R interface to Wikipedia API
-Depends: R (>= 3.1.2)
+Depends: R (>= 2.15.0)
+Imports: httr
+Suggests: testthat, knitr, magrittr
 License: GPL-2
 LazyData: true
