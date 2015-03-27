@@ -9,10 +9,16 @@ pediaextract <- function(wikititle, lang = 'en') {
     return(content(res)$query$page[[1]]$extract)
 }
 
-pediasearch <- function(searchstring, lang = 'en', extract = FALSE, limit = 20, namespace = '0') {
+pediasearch <- function(searchstring, lang = 'en', extract = FALSE, limit = 20, namespace = 0) {
+    if (namespace != 0 & extract) {
+        warning("Extract is only available for namespace = 0")
+        extract <- FALSE
+    }
     res <- GET(langapi(lang), query = list(format = 'json', action = 'opensearch', search = searchstring, limit = limit, namespace = namespace))
     if (extract) {
-        return(list(title = unlist(content(res)[[2]]), extract = unlist(content(res)[[3]])))
+        extracts <- unlist(content(res)[[3]])
+        names(extracts) <- unlist(content(res)[[2]])
+        return(extracts)
     } else {
         return(unlist(content(res)[[2]]))
     }
