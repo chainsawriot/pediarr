@@ -4,7 +4,7 @@ Version: 0.1.1
 Authors@R: "Chung-hong Chan <chainsawtiney@gmail.com> [aut, cre]"
 Description: R interface to Wikipedia API
 Depends: R (>= 2.15.0)
-Imports: httr
+Imports: httr, XML
 Suggests: testthat, knitr, magrittr
 License: GPL-2
 LazyData: true

@@ -7,6 +7,21 @@ pediaextract <- function(wikititle, lang = 'en') {
     return(content(res)$query$page[[1]]$extract)
 }
 
+pediafulltext <- function(wikititle, lang = 'en', format = 'text') {
+    if (format == 'wikimarkup') {
+        res <- GET(langapi(lang), query = list(format = 'json', action = 'query', prop = 'revisions', titles = wikititle, rvprop = 'content', rvlimit = 1))
+        return(content(res)$query$pages[[1]]$revisions[[1]][[3]])
+    } else if (format == 'html') {
+        res <- GET(langapi(lang), query = list(format = 'json', action = 'parse', page = wikititle, prop = 'text'))
+        return(content(res)$parse$text[[1]])
+    } else if (format == 'text') {
+        res <- GET(langapi(lang), query = list(format = 'json', action = 'parse', page = wikititle, prop = 'text'))
+        return(paste(xpathSApply(htmlParse(content(res)$parse$text[[1]], asText = TRUE), "//text()[not(ancestor::script)][not(ancestor::style)][not(ancestor::noscript)][not(ancestor::form)]", xmlValue), collapse = " "))
+    } else {
+        stop("Incorrect format argument, format can only be: text, html or wikimarkup")
+    }
+}
+
 pediasearch <- function(searchstring, lang = 'en', extract = FALSE, limit = 20, namespace = 0) {
     if (namespace != 0 & extract) {
         warning("Extract is only available for namespace = 0")

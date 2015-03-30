@@ -25,7 +25,7 @@ pediasearch("Python", namespace = 14) # search for categories
 pediasearch("Dynamically typed programming languages", namespace = 14, limit = 1)
 ```
 
-* Retrieve extract of Wikipedia article (Full text in the future)
+* Retrieve extract of Wikipedia article
 
 ```r
 pediaextract("Hong_Kong")
@@ -33,6 +33,14 @@ pediaextract("Hong Kong") # smart enough to replace space with underscore
 pediaextract("Hong_Kong", lang="es")
 
 sapply(pediasearch("ukulele"), pediaextract) # it is not a good practice, use pediasearch("ukulele", extract = TRUE)
+```
+
+* Experimental: retrieve the full text of Wikipedia article
+
+```r
+fulltext <- pediafulltext("Albert Einstein", format = 'text') # extremely messy, need to cleanup
+wikitext <- pediafulltext("Albert Einstein", format = 'wikimarkup')
+htmltext <- pediafulltext("Albert Einstein", format = 'html')
 ```
 
 * List out members of Wikipedia category
