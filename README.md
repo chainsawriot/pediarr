@@ -25,7 +25,7 @@ pediasearch("Python", namespace = 14) # search for categories
 pediasearch("Dynamically typed programming languages", namespace = 14, limit = 1)
 ```
 
-* Retrieve extract of Wikipedia article
+* Retrieve extract(s) of Wikipedia article
 
 ```r
 pediaextract("Hong_Kong")
@@ -33,6 +33,9 @@ pediaextract("Hong Kong") # smart enough to replace space with underscore
 pediaextract("Hong_Kong", lang="es")
 
 sapply(pediasearch("ukulele"), pediaextract) # it is not a good practice, use pediasearch("ukulele", extract = TRUE)
+
+# Multiple extracts from one query
+pediaextract(c("R.E.M.", "Nirvana (band)", "Pearl Jam"))
 ```
 
 * Experimental: retrieve the full text of Wikipedia article

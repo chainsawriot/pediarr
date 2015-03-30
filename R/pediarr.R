@@ -1,10 +1,16 @@
+#require(XML)
+#require(httr)
+
 langapi <- function(lang) {
     return(paste0("https://", lang, ".wikipedia.org/w/api.php"))
 }
 
-pediaextract <- function(wikititle, lang = 'en') {
-    res <- GET(langapi(lang), query = list(format = 'json', action = 'query', prop = 'extracts', titles = wikititle, exintro = '', explaintext = ''))
-    return(content(res)$query$page[[1]]$extract)
+# the result return is not in the order of the supplied wikititles.
+
+pediaextract <- function(wikititles, lang = 'en') {
+    res <- GET(langapi(lang), query = list(format = 'json', action = 'query', prop = 'extracts', titles = paste(wikititles,collapse = "|"), exintro = '', explaintext = '', exlimit = 'max'))
+    #return(content(res))
+    return(as.data.frame(t(sapply(content(res)$query$pages, function(x) c(x$title, x$extract))), stringsAsFactors = FALSE))
 }
 
 pediafulltext <- function(wikititle, lang = 'en', format = 'text') {
