@@ -26,3 +26,12 @@ pediacategory <- function(wikicategory, lang = 'en', limit = 500, cmtype = 'page
     res <- GET(langapi(lang), query = list(format = 'json', action = 'query', list = 'categorymembers', cmtitle = wikicategory, cmtype = cmtype, cmlimit = limit, cmprop = 'title'))
     return(sapply(content(res)$query$categorymembers, function(x) x$title))
 }
+
+pedialang <- function(wikititle, lang = 'en', limit = 50, lllang = NULL) {
+    if (is.null(lllang)) {
+        res <- GET(langapi(lang), query = list(format = 'json', action = 'query', prop = 'langlinks', titles = wikititle, lllimit = limit))
+    } else {
+        res <- GET(langapi(lang), query = list(format = 'json', action = 'query', prop = 'langlinks', titles = wikititle, lllimit = limit, lllang = lllang))
+    }
+    return(as.data.frame(t(sapply(content(res)$query$pages[[1]]$langlinks, function(g) { c(g[1], g[2])} )), stringsAsFactors = FALSE))
+}

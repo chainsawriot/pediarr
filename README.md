@@ -41,3 +41,12 @@ sapply(pediasearch("ukulele"), pediaextract) # it is not a good practice, use pe
 pediacategory("Category:Dynamically typed programming languages")
 pediacategory("Category:Dynamically typed programming languages", cmtype = 'page') # ignore subcat and files
 ```
+
+* Retrieve the wikipedia title in other language
+
+```r
+pedialang("Albert Einstein")
+pedialang("米", lang = "ja", lllang = "de")
+pedialang("앨런_튜링", lang = "ko", lllang = "en")
+pedialang("John_McCarthy_(computer_scientist)", lllang = "zh")
+```
