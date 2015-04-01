@@ -21,7 +21,7 @@ Retrieve the full text of Wikipedia article
 }
 \examples{
 pediafulltext("Albert Einstein") # very messy
-pediaextract("Hong Kong", format = 'html')
-pediaextract("Hong Kong", lang="es", format = 'wikimarkup')
+pediafulltext("Hong Kong", format = 'html')
+pediafulltext("Hong Kong", lang="es", format = 'wikimarkup')
 }
 

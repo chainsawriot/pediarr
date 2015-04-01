@@ -36,8 +36,8 @@ pediaextract <- function(wikititles, lang = 'en') {
 #' @return Character string of Wikipedia full text
 #' @examples
 #' pediafulltext("Albert Einstein") # very messy
-#' pediaextract("Hong Kong", format = 'html')
-#' pediaextract("Hong Kong", lang="es", format = 'wikimarkup')
+#' pediafulltext("Hong Kong", format = 'html')
+#' pediafulltext("Hong Kong", lang="es", format = 'wikimarkup')
 #' @export
 pediafulltext <- function(wikititle, lang = 'en', format = 'text') {
     if (format == 'wikimarkup') {
